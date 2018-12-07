@@ -13,6 +13,13 @@ public class Pricing implements Serializable {
 
     public Pricing() {}
 
+    public Pricing(int pricingSchemeNumber, int duration, String granularity, double price) {
+        this.pricingSchemeNumber = pricingSchemeNumber;
+        this.duration = duration;
+        this.granularity = granularity;
+        this.price = price;
+    }
+
     public Pricing(int pricingId, int pricingSchemeNumber, int duration, String granularity, double price) {
         this.pricingId = pricingId;
         this.pricingSchemeNumber = pricingSchemeNumber;

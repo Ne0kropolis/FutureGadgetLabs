@@ -132,13 +132,14 @@
             <version>2.9.7</version>
         </dependency>
 
-        <!--unit test-->
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.2</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
 
         <!-- Tomcat -->
         <dependency>
@@ -182,6 +183,15 @@
             <artifactId>flyway-core</artifactId>
             <version>5.2.1</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.flywaydb.flyway-test-extensions/flyway-spring-test -->
+        <dependency>
+            <groupId>org.flywaydb.flyway-test-extensions</groupId>
+            <artifactId>flyway-spring-test</artifactId>
+            <version>5.2.1</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
 
