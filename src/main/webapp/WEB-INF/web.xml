@@ -8,10 +8,6 @@
         <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
     </listener>
 
-    <!--
-        THE SPRING CONTEXTLOADER LISTENER MUST APPEAR AFTER THE RESTEASYBOOTSTRAP BECAUSE
-        IT WILL RELY ON THE RESTEASY VARIABLES
-    -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>

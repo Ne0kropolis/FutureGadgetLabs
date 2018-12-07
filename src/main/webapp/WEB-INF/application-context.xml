@@ -19,7 +19,7 @@
         <property name = "password" value = ""/>
     </bean>
 
-    <import resource="WEB-INF/flyway-init.xml"/>
+    <import resource="flyway-init.xml"/>
     <import resource="classpath:springmvc-resteasy.xml"/>
 
 </beans>
