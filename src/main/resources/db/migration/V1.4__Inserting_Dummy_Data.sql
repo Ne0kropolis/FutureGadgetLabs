@@ -14,3 +14,4 @@ INSERT INTO LOT VALUES (NEXT VALUE FOR lot_id_seq, 1, 'Cids Garage', 'Hammerhead
 INSERT INTO LOT VALUES (NEXT VALUE FOR lot_id_seq, 2, 'Cindys Garage', 'Transylvania', 5);
 
 INSERT INTO TICKET VALUES (NEXT VALUE FOR ticket_id_seq, 100, '2018-08-08 20:08:08', '2018-08-08 21:10:08', 30, false);
+INSERT INTO TICKET VALUES (NEXT VALUE FOR ticket_id_seq, 100, '2018-08-08 20:08:08', null, 30, true);

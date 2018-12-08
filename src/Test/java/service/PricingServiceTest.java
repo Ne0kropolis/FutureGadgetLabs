@@ -2,8 +2,10 @@ package service;
 
 import com.FutureGadgetLabs.domain.Pricing;
 import com.FutureGadgetLabs.service.PricingService;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -16,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(locations = "classpath:/spring/application-context.xml")
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PricingServiceTest {
 
     @Autowired
@@ -28,7 +31,8 @@ public class PricingServiceTest {
 
     @Test
     public void shouldGetAllPricings() {
-        assertEquals(13, pricingService.getAllPricings().size());
+        Pricing expectedPricing = (Pricing) pricingService.getAllPricings().get(1);
+        assertEquals(2, expectedPricing.getPricingId());
     }
 
     @Test
@@ -39,6 +43,7 @@ public class PricingServiceTest {
 
     @Test
     public void shouldCreateAListOfPricings() throws SQLException {
+        int expectedSize = pricingService.getAllPricings().size()+3;
         List<Pricing> pricingList = new ArrayList<>();
         pricingList.add(new Pricing( 3, 5, "M", 20));
         pricingList.add(new Pricing( 3, 10, "M", 30));
@@ -46,7 +51,7 @@ public class PricingServiceTest {
 
         pricingService.createPricings(pricingList);
 
-        assertEquals(17, pricingService.getAllPricings().size());
+        assertEquals(expectedSize, pricingService.getAllPricings().size());
     }
 
     @Test
@@ -60,8 +65,9 @@ public class PricingServiceTest {
 
     @Test
     public void shouldDeleteASinglePricing() {
-        pricingService.deletePricing(2);
+        int expectedSize = pricingService.getAllPricings().size()-1;
+        pricingService.deletePricing(13);
 
-        assertEquals(14, pricingService.getAllPricings().size());
+        assertEquals(expectedSize, pricingService.getAllPricings().size());
     }
 }

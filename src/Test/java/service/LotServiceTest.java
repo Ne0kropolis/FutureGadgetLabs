@@ -1,10 +1,13 @@
 package service;
 
 import com.FutureGadgetLabs.domain.Lot;
+import com.FutureGadgetLabs.domain.Ticket;
 import com.FutureGadgetLabs.service.LotService;
 import org.flywaydb.test.annotation.FlywayTest;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -17,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(locations = "classpath:/spring/application-context.xml")
-@FlywayTest(invokeCleanDB = true)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class LotServiceTest {
 
     @Autowired
@@ -30,7 +33,8 @@ public class LotServiceTest {
 
     @Test
     public void shouldGetAllLots() {
-        assertEquals(5, lotService.getAllLots().size());
+        Lot expectedLot = (Lot) lotService.getAllLots().get(1);
+        assertEquals(101, expectedLot.getLotId());
     }
 
     @Test
@@ -41,6 +45,7 @@ public class LotServiceTest {
 
     @Test
     public void shouldCreateAListOfLots() throws SQLException {
+        int expectedSize = lotService.getAllLots().size()+3;
         List<Lot> lotList = new ArrayList<>();
         lotList.add(new Lot( 3, "The Yard", "Nowhere", 20));
         lotList.add(new Lot( 3, "The Pit", "Nevada", 30));
@@ -48,7 +53,7 @@ public class LotServiceTest {
 
         lotService.createLots(lotList);
 
-        assertEquals(8, lotService.getAllLots().size());
+        assertEquals(expectedSize, lotService.getAllLots().size());
     }
 
     @Test
@@ -62,8 +67,9 @@ public class LotServiceTest {
 
     @Test
     public void shouldDeleteASingleLot() {
+        int expectedSize = lotService.getAllLots().size()-1;
         lotService.deleteLot(110);
 
-        assertEquals(5, lotService.getAllLots().size());
+        assertEquals(expectedSize, lotService.getAllLots().size());
     }
 }

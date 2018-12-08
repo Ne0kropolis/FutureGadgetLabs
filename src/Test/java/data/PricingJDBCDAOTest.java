@@ -65,7 +65,7 @@ public class PricingJDBCDAOTest {
     public void shouldDeleteAPricing() {
        int expectedTotal = pricingJDBCDAO.getAll().size()-1;
 
-       pricingJDBCDAO.delete(2);
+       pricingJDBCDAO.delete(4);
 
        assertEquals(expectedTotal, pricingJDBCDAO.getAll().size());
     }

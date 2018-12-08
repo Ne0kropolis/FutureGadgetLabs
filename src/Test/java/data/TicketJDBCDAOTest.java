@@ -31,7 +31,7 @@ public class TicketJDBCDAOTest {
 
     @Test
     public void shouldGetAllTickets() {
-        assertEquals(1, ticketJDBCDAO.getAll().size());
+        assertEquals(2, ticketJDBCDAO.getAll().size());
     }
 
     @Test
@@ -44,12 +44,12 @@ public class TicketJDBCDAOTest {
     @Test
     public void shouldBatchInsertTickets() throws SQLException {
         List<Ticket> ticketList = new ArrayList<>();
-        ticketList.add(new Ticket(2,100, java.sql.Timestamp.valueOf("2018-08-08 20:08:08"), java.sql.Timestamp.valueOf("2018-08-08 20:40:08"), 30, false));
-        ticketList.add(new Ticket(3,101, java.sql.Timestamp.valueOf("2018-08-08 20:08:08"), null, 40, true));
-        ticketList.add(new Ticket(4,101, java.sql.Timestamp.valueOf("2018-08-08 20:08:08"), java.sql.Timestamp.valueOf("2018-08-08 20:40:08"), 50, false));
+        ticketList.add(new Ticket(3,100, java.sql.Timestamp.valueOf("2018-08-08 20:08:08"), java.sql.Timestamp.valueOf("2018-08-08 20:40:08"), 30, false));
+        ticketList.add(new Ticket(4,101, java.sql.Timestamp.valueOf("2018-08-08 20:08:08"), null, 40, true));
+        ticketList.add(new Ticket(5,101, java.sql.Timestamp.valueOf("2018-08-08 20:08:08"), java.sql.Timestamp.valueOf("2018-08-08 20:40:08"), 50, false));
 
         ticketJDBCDAO.batchInsert(ticketList);
-        assertEquals(40, ticketJDBCDAO.get(3).getPrice());
+        assertEquals(30, ticketJDBCDAO.get(3).getPrice());
     }
 
     @Test
