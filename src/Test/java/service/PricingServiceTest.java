@@ -22,19 +22,19 @@ public class PricingServiceTest {
     private PricingService pricingService;
 
     @Test
-    public void shouldGetASingleTicket() {
+    public void shouldGetASinglePricing() {
         assertEquals(1, pricingService.getPricingById(1).getPricingId());
     }
 
     @Test
-    public void shouldGetAllTickets() {
-        assertEquals(10, pricingService.getAllPricings().size());
+    public void shouldGetAllPricings() {
+        assertEquals(13, pricingService.getAllPricings().size());
     }
 
     @Test
-    public void shouldCreateASingleTicket() {
-        pricingService.createPricing(new Pricing(20, 3, 40, "H", 300));
-        assertEquals(20, pricingService.getPricingById(20).getPricingId());
+    public void shouldCreateASinglePricing() {
+        pricingService.createPricing(new Pricing(30, 3, 40, "H", 300));
+        assertEquals(30, pricingService.getPricingById(30).getPricingId());
     }
 
     @Test
@@ -46,11 +46,11 @@ public class PricingServiceTest {
 
         pricingService.createPricings(pricingList);
 
-        assertEquals(13, pricingService.getAllPricings().size());
+        assertEquals(17, pricingService.getAllPricings().size());
     }
 
     @Test
-    public void shouldUpdateASingleTicket() {
+    public void shouldUpdateASinglePricing() {
         Pricing updatePricing = new Pricing(1, 4, 30, "M", 400);
 
         pricingService.updatePricing(updatePricing);
@@ -59,9 +59,9 @@ public class PricingServiceTest {
     }
 
     @Test
-    public void shouldDeleteASingleTicket() {
+    public void shouldDeleteASinglePricing() {
         pricingService.deletePricing(2);
 
-        assertEquals(10, pricingService.getAllPricings().size());
+        assertEquals(14, pricingService.getAllPricings().size());
     }
 }

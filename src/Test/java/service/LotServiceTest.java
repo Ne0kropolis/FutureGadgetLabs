@@ -2,6 +2,7 @@ package service;
 
 import com.FutureGadgetLabs.domain.Lot;
 import com.FutureGadgetLabs.service.LotService;
+import org.flywaydb.test.annotation.FlywayTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,23 +17,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(locations = "classpath:/spring/application-context.xml")
+@FlywayTest(invokeCleanDB = true)
 public class LotServiceTest {
 
     @Autowired
     private LotService lotService;
 
     @Test
-    public void shouldGetASingleTicket() {
+    public void shouldGetASingleLot() {
         assertEquals(100, lotService.getLotById(100).getLotId());
     }
 
     @Test
-    public void shouldGetAllTickets() {
-        assertEquals(2, lotService.getAllLots().size());
+    public void shouldGetAllLots() {
+        assertEquals(5, lotService.getAllLots().size());
     }
 
     @Test
-    public void shouldCreateASingleTicket() {
+    public void shouldCreateASingleLot() {
         lotService.createLot(new Lot(110, 2, "The Yard", "Nowhere", 100));
         assertEquals(110, lotService.getLotById(110).getLotId());
     }
@@ -46,11 +48,11 @@ public class LotServiceTest {
 
         lotService.createLots(lotList);
 
-        assertEquals(6, lotService.getAllLots().size());
+        assertEquals(8, lotService.getAllLots().size());
     }
 
     @Test
-    public void shouldUpdateASingleTicket() {
+    public void shouldUpdateASingleLot() {
         Lot updateLot = new Lot(100, 2, "Cindys Garage", "Hammerhead", 200);
 
         lotService.updateLot(updateLot);
@@ -59,8 +61,8 @@ public class LotServiceTest {
     }
 
     @Test
-    public void shouldDeleteASingleTicket() {
-        lotService.deleteLot(101);
+    public void shouldDeleteASingleLot() {
+        lotService.deleteLot(110);
 
         assertEquals(5, lotService.getAllLots().size());
     }
