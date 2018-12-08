@@ -48,6 +48,10 @@ public class Pricing implements Serializable {
         return price;
     }
 
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
     /**
      * Comparator for sorting durations in ascending order.
      */
