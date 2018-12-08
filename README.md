@@ -1,6 +1,6 @@
 # Future Gadget Parking Lot
 
-The Future Gadget Parking Lot Application is a web-based application which provides the ability to create, retrieve, and rate parking lot tickets. The current version provides support for
+The Future Gadget Parking Lot Application is a web-based application which provides the ability to new, retrieve, and rate parking lot tickets. The current version provides support for
 the tracking of multiple parking lots and pricing schemes.
 
 Future Gadget Parking Lot is a Maven based Project utilising the Java Spring framework with Resteasy Jax-rs services which consume and produce JSON payloads.
@@ -89,9 +89,9 @@ retrieves a list of all pricing objects with a given pricing scheme number.
 
 ### @POST
 
-`http://localhost:8080/pricing/create/json`
+`http://localhost:8080/pricing/new/json`
 
-creates a pricing object from a given json object
+news a pricing object from a given json object
 e.g
 
 
@@ -103,21 +103,21 @@ e.g
  	"price": 10
  
 
-creates a list of pricing objects from a given json.
+news a list of pricing objects from a given json.
  
-`http://localhost:8080/pricing/create/list/json`
+`http://localhost:8080/pricing/new/list/json`
 
 ### @PUT
 
 updates a pricing object from a given json.
 
-`http://localhost:8080/pricing/update/json`
+`http://localhost:8080/pricing/json`
 
 ### @Delete
 
 deletes a pricing object with a given id from the database.
 
-`http://localhost:8080/pricing/delete/{id}`
+`http://localhost:8080/pricing/{id}`
 
 ## Lot
 
@@ -133,9 +133,9 @@ retrieves a single lot object with a given pricing Id.
 
 ### @POST
 
-`http://localhost:8080/lot/create/json`
+`http://localhost:8080/lot/new/json`
 
-creates a lot object from a given json object
+news a lot object from a given json object
 e.g
 
 
@@ -147,15 +147,15 @@ e.g
  	"lotCapactiy": 100
  
 
-creates a list of lot objects from a given json.
+news a list of lot objects from a given json.
  
-`http://localhost:8080/lot/create/list/json`
+`http://localhost:8080/lot/new/list/json`
 
 ### @PUT
 
 updates a lot object from a given json.
 
-`http://localhost:8080/lot/update/json`
+`http://localhost:8080/lot/json`
 
 updates the capacity of a lot with a given id
 
@@ -165,11 +165,11 @@ updates the capacity of a lot with a given id
 
 deletes a lot object with a given id from the database.
 
-`http://localhost:8080/pricing/delete/{id}`
+`http://localhost:8080/pricing/{id}`
 
 ## Ticket
 
-Ticket times are processed as Timestamps. A ticket can be created without a time_out or price parameter. These tickets may have their prices calculated individually or as a batch at a later time.
+Ticket times are processed as Timestamps. A ticket can be newd without a time_out or price parameter. These tickets may have their prices calculated individually or as a batch at a later time.
 
 ### @GET
 
@@ -191,9 +191,9 @@ retrieves a single ticket from the database and process it for any outstanding f
 
 ### @POST
 
-`http://localhost:8080/tickets/create/json`
+`http://localhost:8080/tickets/new/json`
 
-creates a ticket object from a given json object
+news a ticket object from a given json object
 e.g
 
 
@@ -204,22 +204,22 @@ e.g
 	"lost": false
  
 
-creates a list of ticket objects from a given json.
+news a list of ticket objects from a given json.
  
-`http://localhost:8080/tickets/create/list/json`
+`http://localhost:8080/tickets/new/list/json`
 
 ### @PUT
 
 updates a ticket object from a given json.
 
-`http://localhost:8080/tickets/update/json`
+`http://localhost:8080/tickets/json`
 
 
 ### @Delete
 
 deletes a ticket object with a given id from the database.
 
-`http://localhost:8080/pricing/delete/{id}`
+`http://localhost:8080/pricing/{id}`
 
 ## License
 
