@@ -65,6 +65,18 @@ public class TicketJDBCDAO implements DAO<Ticket> {
         );
     }
 
+    /**
+     * Batch update for a list of tickets after their prices are calculated.
+     *
+     * @param ticketList
+     * @throws SQLException
+     *
+     */
+    public void batchUpdate(List<Ticket> ticketList) throws SQLException {
+        String query = "UPDATE TICKET SET Lot_Id=?, Ticket_Date=?, Ticket_Time_In=?, Ticket_Time_Out=?, Ticket_Price=?, Ticket_Lost=? Where Ticket_Id = ?;";
+        batchTicketSetValues(ticketList, query);
+    }
+
     @Override
     public void delete(int id) {
         String query = "DELETE FROM TICKET WHERE Ticket_ID = ?;";
