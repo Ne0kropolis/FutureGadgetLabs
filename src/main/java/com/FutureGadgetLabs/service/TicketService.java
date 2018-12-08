@@ -62,7 +62,7 @@ public class TicketService {
 
     /**
      * Retrieves a single ticket and processes it for any outstanding payment.
-     * 
+     *
      * @param id: ticketId
      * @return Ticket with calculated price.
      *

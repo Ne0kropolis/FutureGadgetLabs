@@ -56,6 +56,12 @@ public class LotController {
         this.lotService.updateLot(lot);
     }
 
+    @Path("/capacity")
+    @PUT
+    public void updateLotCapacity(@QueryParam("id") int id, @QueryParam("capacity")int capacity) {
+        this.lotService.updateLotCapacity(id, capacity);
+    }
+
     @Path("/{id}")
     @DELETE
     public void deleteLot(@PathParam("id") int id) { this.lotService.deleteLot(id);}

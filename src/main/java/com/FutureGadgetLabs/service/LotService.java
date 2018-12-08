@@ -37,5 +37,8 @@ public class LotService {
 
     public void updateLot(Lot lot) { this.lotJdbcDao.update(lot); }
 
+    public void updateLotCapacity(int id, int capacity) { lotJdbcDao.updateCapacity(id, capacity); }
+
     public void deleteLot(int id) { this.lotJdbcDao.delete(id); }
+
 }

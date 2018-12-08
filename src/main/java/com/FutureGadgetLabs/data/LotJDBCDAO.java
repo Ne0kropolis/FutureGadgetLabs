@@ -91,6 +91,18 @@ public class LotJDBCDAO implements DAO<Lot> {
         );
     }
 
+    /**
+     * Change capacity for a given lot.
+     *
+     * @param id: lotId
+     * @param capacity: new capacity
+     *
+     */
+    public void updateCapacity(int id, int capacity) {
+        String query = "UPDATE LOT SET Lot_Capacity=? WHERE Lot_Id=?";
+        jdbcTemplate.update(query, capacity, id);
+    }
+
     @Override
     public void delete(int id) {
         String query = "DELETE FROM LOT WHERE Lot_Id=?";
