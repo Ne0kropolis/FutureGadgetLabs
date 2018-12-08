@@ -1,3 +1,5 @@
+package domain;
+
 import com.FutureGadgetLabs.domain.Pricing;
 import org.junit.Before;
 import org.junit.Test;

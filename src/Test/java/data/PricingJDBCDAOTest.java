@@ -1,3 +1,5 @@
+package data;
+
 import com.FutureGadgetLabs.data.PricingJDBCDAO;
 import com.FutureGadgetLabs.domain.Pricing;
 import org.flywaydb.test.annotation.FlywayTest;
