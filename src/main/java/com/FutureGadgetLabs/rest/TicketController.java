@@ -38,6 +38,20 @@ public class TicketController {
         return this.ticketService.getTicketById(id);
     }
 
+    @Path("/outstanding")
+    @GET
+    @Produces("application/json")
+    public List<Ticket> getAllOutstandingTickets() throws SQLException {
+        return ticketService.calculateAllOutstandingTickets();
+    }
+
+    @Path("/outstanding/{id}")
+    @GET
+    @Produces("application/json")
+    public Ticket getOutstandingTicket(@PathParam("id") int id) {
+        return ticketService.calculateOutstandingTicket(id);
+    }
+
     @Path("/new/json")
     @POST
     @Consumes("application/json")
