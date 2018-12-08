@@ -2,6 +2,7 @@ package data;
 
 import com.FutureGadgetLabs.data.LotJDBCDAO;
 import com.FutureGadgetLabs.domain.Lot;
+import com.FutureGadgetLabs.domain.PricingScheme;
 import org.flywaydb.test.annotation.FlywayTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,6 +36,12 @@ public class LotJDBCDAOTest {
     }
 
     @Test
+    public void shouldGetPricingSchemeNumber() {
+        int pricingSchemeNumber = lotJDBCDAO.getPricingSchemeNumber(101);
+        assertEquals(2, pricingSchemeNumber);
+    }
+
+    @Test
     public void shouldInsertASingleLot() {
         lotJDBCDAO.insert(new Lot(200, 3, "Zombieland", "Texas", 300));
 
@@ -54,11 +61,11 @@ public class LotJDBCDAOTest {
 
     @Test
     public void shouldUpdateALot() {
-        Lot newLot = new Lot(100, 4, "Cindys Garage", "HammerHead", 400);
+        Lot newLot = new Lot(100, 1, "Cindys Garage", "HammerHead", 400);
 
         lotJDBCDAO.update(newLot);
 
-        assertEquals(4, lotJDBCDAO.get(100).getPricingSchemeNumber());
+        assertEquals(400, lotJDBCDAO.get(100).getlotCapacity());
     }
 
     @Test

@@ -2,6 +2,7 @@ package data;
 
 import com.FutureGadgetLabs.data.PricingJDBCDAO;
 import com.FutureGadgetLabs.domain.Pricing;
+import com.FutureGadgetLabs.domain.PricingScheme;
 import org.flywaydb.test.annotation.FlywayTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,6 +33,19 @@ public class PricingJDBCDAOTest {
     @Test
     public void shouldGetAllPricings() {
         assertEquals(13, pricingJDBCDAO.getAll().size());
+    }
+
+    @Test
+    public void shouldGetPricingScheme() {
+        PricingScheme pricingScheme = pricingJDBCDAO.getPricingScheme(1);
+        pricingScheme.getDurations();
+        assertEquals(100, pricingScheme.getLostTicketPrice());
+    }
+
+    @Test
+    public void shouoldGetAPricingSchemeList() {
+        List<Pricing> pricingList = pricingJDBCDAO.getPricingBySchemeNumber(2);
+        assertEquals(200, pricingList.get(4).getPrice());
     }
 
     @Test

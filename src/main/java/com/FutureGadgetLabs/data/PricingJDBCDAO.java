@@ -1,6 +1,7 @@
 package com.FutureGadgetLabs.data;
 
 import com.FutureGadgetLabs.domain.Pricing;
+import com.FutureGadgetLabs.domain.PricingScheme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -33,6 +34,31 @@ public class PricingJDBCDAO implements DAO<Pricing> {
     public List<Pricing> getAll() {
         String query = "SELECT * FROM PRICING";
         return (jdbcTemplate.query(query, new PricingMapper()));
+    }
+
+    /**
+     * Retrieve all Pricing rows with the same pricing scheme and store it as a PricingScheme Object.
+     *
+     * @param pricingSchemeNumber
+     * @return PricingScheme of Pricings with same Pricing Scheme Number.
+     *
+     */
+    public PricingScheme getPricingScheme(int pricingSchemeNumber) {
+        String query = "SELECT * FROM PRICING WHERE Pricing_Scheme_Number =?";
+        List<Pricing> pricingList = jdbcTemplate.query(query, new PricingMapper(), pricingSchemeNumber);
+        return new PricingScheme(pricingList);
+    }
+
+    /**
+     * Retrieve a list of all Pricing rows with the same pricing scheme and return them as a list.
+     *
+     * @param pricingSchemeNumber
+     * @return List<Pricing>.
+     *
+     */
+    public List<Pricing> getPricingBySchemeNumber(int pricingSchemeNumber) {
+        String query = "SELECT * FROM PRICING WHERE Pricing_Scheme_Number =?";
+        return jdbcTemplate.query(query, new PricingMapper(), pricingSchemeNumber);
     }
 
     @Override

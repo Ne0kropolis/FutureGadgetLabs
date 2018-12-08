@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class LotJDBCDAO implements DAO<Lot> {
@@ -33,6 +34,16 @@ public class LotJDBCDAO implements DAO<Lot> {
     public List<Lot> getAll() {
         String query = "SELECT * FROM LOT;";
         return (jdbcTemplate.query(query, new LotMapper()));
+    }
+
+    /**
+     * Retrieves a pricing scheme number for a given lot id.
+     * @param id: lotId
+     * @return int pricingSchemeNumber
+     */
+    public Integer getPricingSchemeNumber(int id) {
+        String query = "SELECT * FROM LOT WHERE Lot_Id = " + id;
+        return Objects.requireNonNull(this.jdbcTemplate.queryForObject(query, new LotMapper())).getPricingSchemeNumber();
     }
 
     @Override
