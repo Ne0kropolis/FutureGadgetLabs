@@ -26,6 +26,8 @@ public class PricingService {
 
     public Pricing getPricingById(int id) { return (this.pricingJdbcDao.get(id)); }
 
+    public List<Pricing> getPricingBySchemeNumber(int id) { return pricingJdbcDao.getPricingBySchemeNumber(id); }
+
     public void createPricing(Pricing pricing) { this.pricingJdbcDao.insert(pricing); }
 
     public void createPricings(List<Pricing> pricingList) throws SQLException {this.pricingJdbcDao.batchInsert(pricingList);}

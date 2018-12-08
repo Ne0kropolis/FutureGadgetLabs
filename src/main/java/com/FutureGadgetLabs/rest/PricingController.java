@@ -51,6 +51,11 @@ public class PricingController {
         this.pricingService.createPricings(pricingList);
     }
 
+    @Path("/scheme/{id}")
+    @GET
+    @Produces("application/json")
+    public List<Pricing> getPricingBySchemeId(@PathParam("id") int id) { return this.pricingService.getPricingBySchemeNumber(id); }
+
     @Path("/json")
     @PUT
     @Consumes("application/json")
